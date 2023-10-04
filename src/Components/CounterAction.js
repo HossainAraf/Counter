@@ -1,52 +1,35 @@
-// counterAction.js
-
-// IMPORT
-// import { useDispatch } from 'react-redux';
-
-
-// ACTION
-const increment = () => {
-  return {
-    type: 'INCREMENT',
-  };
-}
-
 // REDUCER
-const initialState = {
-  count: 0,
-};
+const reducerFnc = (state = { count: 0 }, action) => {
 
-const countReducer = (state = initialState, action) => {
+  // must Synchonous function
+  // must return a new state object. can't mutate the state object
+
   if (action.type === 'INCREMENT') {
     return {
       ...state,
-      count: state.count + 1,
-    };
+      count: state.count +1
+    }
+  }
+  if (action.type === 'DECREMENT') {
+    return {
+      ...state,
+      count: state.count -1
+    }
+  }
+return state;
+}
+
+const increment = () => {
+  return {
+    type: 'INCREMENT',
   }
 }
 
+const decrement = () => {
+  return {
+    type: 'DECREMENT',
+  }
+}
 
-// EXPORT
-export { increment };
-export default countReducer;
-
-  // // ACTION
-  // const increment = () => {
-  //   dispatch({ type: 'INCREMENT' });
-  //     }
-    
-  //     // REDUCER
-  //     const initialState = {
-  //       count: 0,
-  //     };
-    
-  //     const reducer = (state = initialState, action) => {
-    
-    
-  //     if (action.type === 'INCREMENT') {
-  //       return {
-  //         ...state,
-  //         count: state.count + 1,
-  //       };
-  //     }
-    
+export { increment, decrement };
+export default reducerFnc;

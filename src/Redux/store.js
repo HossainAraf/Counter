@@ -1,9 +1,10 @@
+//IMPORTS
 import  { configureStore } from '@reduxjs/toolkit';
-import countReducer from '../Components/Counter';
+import reducerFnc from '../Components/CounterAction';
 
 
 const store = configureStore({
-  reducer: countReducer
+  reducer: reducerFnc
 });
 
 export default store;
