@@ -1,7 +1,7 @@
 //IMPORTS 
 import React from 'react';
 import { useSelector,  useDispatch } from 'react-redux';
-import { increment } from './CounterAction'
+import { increment, decrement } from './CounterAction'
 
 //COMPONENT
 const Counter =  () => {
@@ -13,11 +13,15 @@ const Counter =  () => {
     dispatch(increment());
   }
 
+  const handleDecrement = () => {
+    dispatch(decrement());
+  }
+
   return (
     <div className="">
      <h1>{counter}</h1>
      <button onClick={handleIncrement} >Increment</button>
-      <button>Decrement</button>
+      <button onClick={handleDecrement}>Decrement</button>
     </div>
   );
 }
