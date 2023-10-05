@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { increment, decrement, addByAmount } from '../Redux/counterSlice';
+import { increment, decrement, incrementByInput, decrementByInput } from '../Redux/counterSlice';
 
 // COMPONENT
 const Counter = () => {
@@ -18,25 +18,28 @@ const Counter = () => {
     dispatch(decrement());
   }
 
-  const handleAddByInput = () => {
+  const handleIncrementByInput = () => {
     // Parse inputValue to a number and pass it as an argument
     const amountToAdd = parseInt(input, 10);
-    if (!isNaN(amountToAdd)) {
-      dispatch(addByAmount(amountToAdd));
-    }
+      dispatch(incrementByInput(amountToAdd));
   }
 
   const handleInput = (e) => {
     setInput(e.target.value); // Update inputValue when the input changes
   }
   
+  const handleDecrementByInput = () => {
+    const amountToSubtract = parseInt(input, 10);
+    dispatch(decrementByInput(amountToSubtract));
+  }
   return (
     <div>
       <h1>Counter</h1>
       <h2>{counter}</h2>
       <button onClick={handleIncrement}>+</button>
       <button onClick={handleDecrement}>-</button>
-      <button onClick={handleAddByInput}>+ Your input value</button>
+      <button onClick={handleIncrementByInput}>+ Your input value</button>
+      <button onClick={handleDecrementByInput}>+ Your input value</button>
       <input type='text' onChange={handleInput}></input>
     </div>
   );
