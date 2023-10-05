@@ -21,17 +21,25 @@ const Counter = () => {
   const handleIncrementByInput = () => {
     // Parse inputValue to a number and pass it as an argument
     const amountToAdd = parseInt(input, 10);
+    if (!isNaN(amountToAdd)){
       dispatch(incrementByInput(amountToAdd));
+  } else {
+    alert('Please enter a number');
   }
+}
 
   const handleInput = (e) => {
-    setInput(e.target.value); // Update inputValue when the input changes
+    setInput(e.target.value); 
   }
   
   const handleDecrementByInput = () => {
     const amountToSubtract = parseInt(input, 10);
-    dispatch(decrementByInput(amountToSubtract));
+    if (!isNaN(amountToSubtract)) {
+      dispatch(decrementByInput(amountToSubtract));      
+  } else {
+    alert('Please enter a number');
   }
+}
   return (
     <div>
       <h1>Counter</h1>
