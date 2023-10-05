@@ -1,12 +1,11 @@
-//IMPORTS 
+// IMPORTS
 import React from 'react';
-import { useSelector,  useDispatch } from 'react-redux';
-import { increment, decrement } from './CounterAction'
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement } from '../Redux/counterSlice';
 
-//COMPONENT
-const Counter =  () => {
-  const counter = useSelector((state) => state.count);
-
+// COMPONENT
+const Counter = () => {
+  const counter = useSelector((state) => state.value);
   const dispatch = useDispatch();
 
   const handleIncrement = () => {
@@ -18,10 +17,11 @@ const Counter =  () => {
   }
 
   return (
-    <div className="">
-     <h1>{counter}</h1>
-     <button onClick={handleIncrement} >Increment</button>
-      <button onClick={handleDecrement}>Decrement</button>
+    <div>
+      <h1>Counter</h1>
+      <h2>{counter}</h2>
+      <button onClick={handleIncrement}>+</button>
+      <button onClick={handleDecrement}>-</button>
     </div>
   );
 }

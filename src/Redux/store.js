@@ -1,10 +1,10 @@
 //IMPORTS
 import  { configureStore } from '@reduxjs/toolkit';
-import reducerFnc from '../Components/CounterAction';
+import counterSlice from './counterSlice';
 
 
 const store = configureStore({
-  reducer: reducerFnc
+  reducer: counterSlice
 });
 
 export default store;
