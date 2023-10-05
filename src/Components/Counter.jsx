@@ -1,12 +1,14 @@
 // IMPORTS
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { increment, decrement, addByAmount } from '../Redux/counterSlice';
 
 // COMPONENT
 const Counter = () => {
   const counter = useSelector((state) => state.value);
   const dispatch = useDispatch();
+  const [input, setInput] = useState('');
 
   const handleIncrement = () => {
     dispatch(increment());
@@ -16,8 +18,16 @@ const Counter = () => {
     dispatch(decrement());
   }
 
-  const handleAddByAmount = () => {
-    dispatch(addByAmount(5));
+  const handleAddByInput = () => {
+    // Parse inputValue to a number and pass it as an argument
+    const amountToAdd = parseInt(input, 10);
+    if (!isNaN(amountToAdd)) {
+      dispatch(addByAmount(amountToAdd));
+    }
+  }
+
+  const handleInput = (e) => {
+    setInput(e.target.value); // Update inputValue when the input changes
   }
   
   return (
@@ -26,7 +36,8 @@ const Counter = () => {
       <h2>{counter}</h2>
       <button onClick={handleIncrement}>+</button>
       <button onClick={handleDecrement}>-</button>
-      <button onClick={handleAddByAmount}>+5</button>
+      <button onClick={handleAddByInput}>+ Your input value</button>
+      <input type='text' onChange={handleInput}></input>
     </div>
   );
 }
